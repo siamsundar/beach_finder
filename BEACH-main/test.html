@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Finder in India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            margin: 20px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            border: none;
+            margin: 20px 0;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Beach Finder in India</h1>
+    <label for="state">Select a State:</label>
+    <select id="state">
+        <option value="">--Select a State--</option>
+        <option value="Goa">Goa</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="West Bengal">West Bengal</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Daman and Diu">Daman and Diu</option>
+        <option value="Puducherry">Puducherry</option>
+    </select>
+    <button onclick="updateMap()">Search</button>
+    <iframe id="map" src="" allowfullscreen></iframe>
+    <p id="message"></p>
+
+    <script>
+        function updateMap() {
+            const state = document.getElementById('state').value;
+            let mapURL = '';
+            let message = '';
+
+            // Define URLs based on the selected state
+            switch(state) {
+                case 'Goa':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Goa';
+                    break;
+                case 'Kerala':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Kerala';
+                    break;
+                case 'Tamil Nadu':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Tamil+Nadu';
+                    break;
+                case 'Karnataka':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Karnataka';
+                    break;
+                case 'Maharashtra':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Maharashtra';
+                    break;
+                case 'Andhra Pradesh':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Andhra+Pradesh';
+                    break;
+                case 'West Bengal':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+West+Bengal';
+                    break;
+                case 'Odisha':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Odisha';
+                    break;
+                case 'Gujarat':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Gujarat';
+                    break;
+                case 'Daman and Diu':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Daman+and+Diu';
+                    break;
+                case 'Puducherry':
+                    mapURL = 'https://www.google.com/maps/search/beach+in+Puducherry';
+                    break;
+                default:
+                    mapURL = '';
+                    message = 'No beaches available in the selected state.';
+                    break;
+            }
+
+            // Open the URL in a new tab
+            if (mapURL) {
+                window.open(mapURL, '_blank');
+            } else {
+                document.getElementById('message').textContent = message;
+            }
+        }
+    </script>
+</body>
+</html>

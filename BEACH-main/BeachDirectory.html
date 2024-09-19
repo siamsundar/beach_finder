@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Directory - India</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+}
+
+header {
+    background: linear-gradient(to right, #00796b, #004d40);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #004d40;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 220px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-left: 5px solid #00796b; /* Colorful left border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Beach Directory - India</h1>
+        <p>Explore the beautiful beaches across India!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#maharashtra">Maharashtra</a></li>
+            <li><a href="#kerala">Kerala</a></li>
+            <li><a href="#tamilnadu">Tamil Nadu</a></li>
+            <li><a href="#andaman">Andaman & Nicobar</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Filter Beaches by State</h2>
+        <select id="stateSelect">
+            <option value="all">All States</option>
+            <option value="goa">Goa</option>
+            <option value="maharashtra">Maharashtra</option>
+            <option value="kerala">Kerala</option>
+            <option value="tamilnadu">Tamil Nadu</option>
+            <option value="andaman">Andaman & Nicobar</option>
+        </select>
+    </section>
+
+    <div id="beaches" class="cards-container">
+        <div class="card" data-state="goa">
+            <img src="data:image/jpeg;base64,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" alt="Calangute Beach">
+            <h3>Calangute Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="goa">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4sIgaslZdujI0HUKeytgy4GiVRGY0CKM45w&s" alt="Baga Beach">
+            <h3>Baga Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="goa">
+            <img src="https://www.hlimg.com/images/things2do/738X538/ab_1506902489t.jpg" alt="Anjuna Beach">
+            <h3>Anjuna Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="goa">
+            <img src="https://i2.wp.com/trot.world/wp-content/uploads/2020/07/DSC_0665-scaled.jpg?fit=2560%2C1707&ssl=1" alt="Palolem Beach">
+            <h3>Palolem Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="goa">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/e5/03/bd/img-20181104-094252-largejpg.jpg?w=1200&h=-1&s=1" alt="Vagator Beach">
+            <h3>Vagator Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/14/62/f4/caption.jpg?w=300&h=300&s=1" alt="Juhu Beach">
+            <h3>Juhu Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Aksa_Beach_afternoon.jpg/1200px-Aksa_Beach_afternoon.jpg" alt="Aksa Beach">
+            <h3>Aksa Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://cdn.iwant2explore.com/gallery/ganpatipule_beach1640687225760.jpg.webp" alt="Ganpatipule Beach">
+            <h3>Ganpatipule Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRhPvkJvBDIdg4iOSJjC59SjY_zFiUbXVSdA&s" alt="Alibaug Beach">
+            <h3>Alibaug Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYp_Uac37L5ivePbEHai8Hj30DMROI3TCJuw&s" alt="Malvan Beach">
+            <h3>Malvan Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://www.indianarrative.com/wp-content/uploads/2023/05/Varkala-Beach1.jpg" alt="Varkala Beach">
+            <h3>Varkala Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/68/eb/82/img-20180318-142530-largejpg.jpg?w=1200&h=-1&s=1" alt="Fort Kochi Beach">
+            <h3>Fort Kochi Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://www.thesanchari.com/wp-content/uploads/2023/09/alleppey-beach-800x600.jpg" alt="Alleppey Beach">
+            <h3>Alleppey Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2aTpSOoeIenB3-6LZOICQQQCcEaF-zY1qg&s" alt="Kovalam Beach">
+            <h3>Kovalam Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2021/03/23115211/8-12.jpg" alt="Marari Beach">
+            <h3>Thiruvambadi Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://www.tamilnadutourism.tn.gov.in/img/pages/large-desktop/marina-beach-1656303766_3ddf37f0ea992c79047a.webp" alt="Marina Beach">
+            <h3>Marina Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqaXc91hBrXDC6s0FNX0NF3J0rgjo8KnV1zJuksuFeK-lYGrREySpcJ6IneH6UAGIba74&usqp=CAU" alt="Mahabalipuram Beach">
+            <h3>Mahabalipuram Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgl0uo7wdjIKMFw-jHHbj23pbYb16wv_6PWA&s" alt="Covelong Beach">
+            <h3>Covelong Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://s3.india.com/travel/wp-content/uploads/2016/07/kanyakumari.jpg" alt="Kanyakumari Beach">
+            <h3>Kanyakumari Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://hblimg.mmtcdn.com/content/hubble/img/additionalttdimages/mmt/activities/t_ufs/m_Kunthu_Kal_Beach_Rameshwaram_1_l_425_640.jpg" alt="Rameswaram Beach">
+            <h3>Rameswaram Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://cdn.prod.website-files.com/5b56319971ac8c7475a9d877/5ee481817da4561eb9621b3e_Radhanagar-.JPG" alt="Radhanagar Beach">
+            <h3>Radhanagar Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://cdn.prod.website-files.com/5b56319971ac8c7475a9d877/5ee481817da4561eb9621b3e_Radhanagar-.JPG" alt="Vijay Nagar Beach">
+            <h3>Vijay Nagar Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://www.seawatersports.com/img/newimage/places/havelock-island-in-andaman.jpg" alt="Havelock Beach">
+            <h3>Havelock Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://adventureandaman.com/upload/articles_img/neil-island-andaman-the-hidden-marvel.jpg" alt="Neil Island Beach">
+            <h3>Neil Island Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaypRE3KMytg-kuX2n7CYLzrrGs5tfj5F9qg&s" alt="Long Island Beach">
+            <h3>Long Island Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <!-- Add more beaches up to 30 -->
+        <div class="card" data-state="goa">
+            <img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/68000/68246-Arambol-Beach.jpg" alt="Arambol Beach">
+            <h3>Arambol Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="maharasht" alt="Devgad Beach">
+            <img src="" alt="Devgad Beach">
+            <h3>Devgad Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://www.keralatourism.org/images/destination/mobile/bekal20131119173955_259_1.jpg" alt="Bekal Beach">
+            <h3>Bekal Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://www.tamilnadutourism.tn.gov.in/img/pages/thumb/tranquebar-1678086444_b33c554309cf0e63b29b.webp" alt="Poompuhar Beach">
+            <h3>Poompuhar Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2019/07/Andaman-Island.jpg" alt="Little Andaman Beach">
+            <h3>Little Andaman Beach</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+        <div class="card" data-state="goa">
+            <img src="https://cdn.thegoavilla.com/static/img/articles/mandrem-beach.jpg" alt="Mandrem Beach">
+            <h3>Mandrem Beach</h3>
+            <p>Location: Goa</p>
+        </div>
+        <div class="card" data-state="maharashtra">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5r-A37a8Kwg89ZLU7DWRkzopBZcdzBFgakw&s" alt="Guhagar Beach">
+            <h3>Guhagar Beach</h3>
+            <p>Location: Maharashtra</p>
+        </div>
+        <div class="card" data-state="kerala">
+            <img src="https://keralabee.com/wp-content/uploads/2023/09/IMG_20230908_225808-1024x768.webp" alt="Munroe Island Beach">
+            <h3>Munroe Island Beach</h3>
+            <p>Location: Kerala</p>
+        </div>
+        <div class="card" data-state="tamilnadu">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf9eu9K8mDlRB1gSWGpeNc1Mbp6CZY_sgTCg&s" alt="Kovalam Beach">
+            <h3>Kovalam Beach</h3>
+            <p>Location: Tamil Nadu</p>
+        </div>
+        <div class="card" data-state="andaman">
+            <img src="https://static.toiimg.com/photo/104400974.cms" alt="beach no. 7">
+            <h3>Beach No. 7</h3>
+            <p>Location: Andaman & Nicobar</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Beach Directory</p>
+    </footer>
+
+    <script>
+        document.getElementById("stateSelect").addEventListener("change", filterBeaches);
+
+function filterBeaches() {
+    const selectedState = document.getElementById("stateSelect").value;
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selectedState === "all" || card.getAttribute("data-state") === selectedState) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</body>
+</html>

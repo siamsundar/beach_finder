@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews for Indian Beaches</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #fce4ec;
+}
+
+header {
+    background-color: #c2185b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #d81b60;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-left: 5px solid #c2185b; /* Colorful left border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card span {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>User Reviews for Indian Beaches</h1>
+        <p>Read what visitors have to say about their beach experiences!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#puri">Puri</a></li>
+            <li><a href="#andaman">Andaman Islands</a></li>
+            <li><a href="#mahabalipuram">Mahabalipuram</a></li>
+            <li><a href="#varkala">Varkala</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Filter Reviews by Rating</h2>
+        <select id="ratingSelect">
+            <option value="all">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="2">2 Stars</option>
+            <option value="1">1 Star</option>
+        </select>
+    </section>
+
+    <div id="reviews" class="cards-container">
+        <div class="card" data-rating="5">
+            <h3>Goa</h3>
+            <p>Rating: <span>5 Stars</span></p>
+            <p>Review: "Amazing beaches with vibrant nightlife! A must-visit!"</p>
+        </div>
+        <div class="card" data-rating="4">
+            <h3>Puri</h3>
+            <p>Rating: <span>4 Stars</span></p>
+            <p>Review: "Beautiful scenery and great local food."</p>
+        </div>
+        <div class="card" data-rating="5">
+            <h3>Andaman Islands</h3>
+            <p>Rating: <span>5 Stars</span></p>
+            <p>Review: "Paradise on Earth! Crystal clear waters and stunning beaches."</p>
+        </div>
+        <div class="card" data-rating="3">
+            <h3>Mahabalipuram</h3>
+            <p>Rating: <span>3 Stars</span></p>
+            <p>Review: "Good for a day trip, but crowded and noisy."</p>
+        </div>
+        <div class="card" data-rating="4">
+            <h3>Varkala</h3>
+            <p>Rating: <span>4 Stars</span></p>
+            <p>Review: "A peaceful beach with lovely cliffs and sunsets."</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Beach User Reviews</p>
+    </footer>
+
+    <script>
+        document.getElementById("ratingSelect").addEventListener("change", filterReviews);
+
+function filterReviews() {
+    const selectedRating = document.getElementById("ratingSelect").value;
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selectedRating === "all" || card.getAttribute("data-rating") === selectedRating) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</body>
+</html>

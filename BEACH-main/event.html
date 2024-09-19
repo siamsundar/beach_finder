@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Events at Indian Beaches</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #e3f2fd;
+}
+
+header {
+    background-color: #1976d2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-left: 5px solid #1976d2; /* Colorful left border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card span {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Local Events at Indian Beaches</h1>
+        <p>Discover exciting events happening near you!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#puri">Puri</a></li>
+            <li><a href="#andaman">Andaman Islands</a></li>
+            <li><a href="#mahabalipuram">Mahabalipuram</a></li>
+            <li><a href="#varkala">Varkala</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Filter Events by Type</h2>
+        <select id="eventTypeSelect">
+            <option value="all">All Events</option>
+            <option value="festivals">Festivals</option>
+            <option value="sports">Sports Events</option>
+            <option value="music">Music Concerts</option>
+            <option value="workshops">Workshops</option>
+        </select>
+    </section>
+
+    <div id="events" class="cards-container">
+        <div class="card" data-category="festivals">
+            <h3>Goa Carnival</h3>
+            <p>Date: <span>February 12-14</span></p>
+            <p>Description: A vibrant celebration with parades, music, and dance.</p>
+        </div>
+        <div class="card" data-category="music">
+            <h3>Puri Beach Music Fest</h3>
+            <p>Date: <span>March 20</span></p>
+            <p>Description: Enjoy live performances from top artists on the beach!</p>
+        </div>
+        <div class="card" data-category="sports">
+            <h3>Andaman Islands Water Sports Day</h3>
+            <p>Date: <span>April 5</span></p>
+            <p>Description: Participate in various water sports competitions.</p>
+        </div>
+        <div class="card" data-category="workshops">
+            <h3>Mahabalipuram Art Workshop</h3>
+            <p>Date: <span>May 15</span></p>
+            <p>Description: Learn traditional art forms with local artists.</p>
+        </div>
+        <div class="card" data-category="festivals">
+            <h3>Varkala Beach Festival</h3>
+            <p>Date: <span>June 10-12</span></p>
+            <p>Description: Celebrate local culture with food, music, and crafts.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Local Events Finder</p>
+    </footer>
+
+    <script>
+        document.getElementById("eventTypeSelect").addEventListener("change", filterEvents);
+
+function filterEvents() {
+    const selectedType = document.getElementById("eventTypeSelect").value;
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selectedType === "all" || card.getAttribute("data-category") === selectedType) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</body>
+</html>

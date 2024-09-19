@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Beach Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</head>
+<body>
+    <video loop autoplay muted>
+        <source src="https://cdn.pixabay.com/video/2023/04/11/158349-816637197_large.mp4" type="video/mp4">
+    </video>
+    <header>
+        <h1>Indian Beach Directory</h1>
+        <p class="tagline">Find your perfect beach getaway</p>
+        <nav>
+            <ul>
+                <li><a href="./BeachDirectory.html">Beach Directory</a></li>
+                <li><a href="./recreation.html">Recreational Suitability</a></li>
+                <li><a href="./weather.html">Weather & Sea Conditions</a></li>
+                <li><a href="./safety.html">Safety Index</a></li>
+                <li><a href="./Restroomnearby.html">Restroom Nearby</a></li>
+                <li><a href="./Amenities.html">Amenities & Facilities</a></li>
+                <li><a href="./review.html">User Reviews</a></li>
+                <li><a href="./test.html">Maps & Directions</a></li>
+                <li><a href="./event.html">Local Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="font-size:10vw">Hello World</h1>
+        
+        <section id="directory">
+            <h2>Beach Directory</h2>
+            <input type="text" id="search" placeholder="Search beaches..." oninput="filterBeaches()">
+            <div id="beach-list"></div>
+        </section>
+
+        <h2>Maps and Directions</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+
+        <script>
+            function initMap() {
+                const goaBeach = { lat: 15.2993, lng: 74.1240 };
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: goaBeach
+                });
+                new google.maps.Marker({
+                    position: goaBeach,
+                    map: map
+                });
+            }
+
+            function filterBeaches() {
+                const input = document.getElementById('search').value.toLowerCase();
+                const beaches = document.querySelectorAll('#beach-list .beach-item');
+                beaches.forEach(beach => {
+                    const name = beach.textContent.toLowerCase();
+                    beach.style.display = name.includes(input) ? 'block' : 'none';
+                });
+            }
+        </script>
+
+        <section id="activities">
+            <h2>Recreational Suitability</h2>
+            <p>Information about beach activities such as swimming, surfing, and fishing.</p>
+        </section>
+
+        <section id="weather">
+            <h2>Weather and Sea Conditions</h2>
+            <div id="weather-updates"></div>
+        </section>
+
+        <section id="safety">
+            <h2>Safety Index</h2>
+            <div id="safety-ratings"></div>
+        </section>
+
+        <section id="restroom">
+            <h2>Restrooms Nearby</h2>
+            <div id="restroom-info"></div>
+        </section>
+
+        <section id="amenities">
+            <h2>Amenities and Facilities</h2>
+            <div id="amenities-info"></div>
+        </section>
+
+        <section id="reviews">
+            <h2>User Reviews</h2>
+            <div id="user-reviews"></div>
+            <textarea id="comment-box" placeholder="Leave a comment"></textarea>
+            <button onclick="submitComment()">Submit</button>
+        </section>
+
+        <section id="events">
+            <h2>Local Events</h2>
+            <table id="events-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Event rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Indian Beach Directory. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

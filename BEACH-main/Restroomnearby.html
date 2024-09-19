@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Restrooms at Beaches</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #e0f7fa;
+}
+
+header {
+    background-color: #009688;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-left: 5px solid #009688; /* Colorful left border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card span {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style></head>
+<body>
+    <header>
+        <h1>Nearby Restrooms at Indian Beaches</h1>
+        <p>Find convenient restroom facilities at popular beaches!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#puri">Puri</a></li>
+            <li><a href="#andaman">Andaman Islands</a></li>
+            <li><a href="#mahabalipuram">Mahabalipuram</a></li>
+            <li><a href="#varkala">Varkala</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Select Restroom Availability</h2>
+        <select id="restroomSelect">
+            <option value="all">All Facilities</option>
+            <option value="available">Available</option>
+            <option value="limited">Limited</option>
+            <option value="not available">Not Available</option>
+        </select>
+    </section>
+
+    <div id="locations" class="cards-container">
+        <div class="card" data-category="available">
+            <h3>Goa</h3>
+            <p>Restroom Availability: <span>Available</span></p>
+            <p>Notes: Clean and well-maintained facilities.</p>
+        </div>
+        <div class="card" data-category="limited">
+            <h3>Puri</h3>
+            <p>Restroom Availability: <span>Limited</span></p>
+            <p>Notes: Some restrooms may have long wait times.</p>
+        </div>
+        <div class="card" data-category="available">
+            <h3>Andaman Islands</h3>
+            <p>Restroom Availability: <span>Available</span></p>
+            <p>Notes: Accessible and hygienic restrooms.</p>
+        </div>
+        <div class="card" data-category="not available">
+            <h3>Mahabalipuram</h3>
+            <p>Restroom Availability: <span>Not Available</span></p>
+            <p>Notes: No restroom facilities nearby.</p>
+        </div>
+        <div class="card" data-category="available">
+            <h3>Varkala</h3>
+            <p>Restroom Availability: <span>Available</span></p>
+            <p>Notes: Restrooms are regularly cleaned.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Nearby Restrooms Finder</p>
+    </footer>
+
+    <script>
+        document.getElementById("restroomSelect").addEventListener("change", filterCards);
+
+function filterCards() {
+    const selectedAvailability = document.getElementById("restroomSelect").value;
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selectedAvailability === "all" || card.getAttribute("data-category") === selectedAvailability) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</body>
+</html>

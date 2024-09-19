@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Beach Weather & Sea Conditions</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #eaeaea;
+}
+
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #005fa3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0077cc;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    nav li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Indian Beach Weather & Sea Conditions</h1>
+        <button id="refreshButton">Refresh Data</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#puri">Puri</a></li>
+            <li><a href="#mahabalipuram">Mahabalipuram</a></li>
+        </ul>
+    </nav>
+
+    <section id="goa" class="card">
+        <h2>Goa</h2>
+        <div class="weather-info">
+            <p>Location: <span id="goa-location">Goa</span></p>
+            <p>Temperature: <span id="goa-temperature">85°F</span></p>
+            <p>Condition: <span id="goa-condition">Sunny</span></p>
+        </div>
+        <div class="sea-info">
+            <p>Wave Height: <span id="goa-wave-height">3 ft</span></p>
+            <p>Water Temperature: <span id="goa-water-temp">78°F</span></p>
+            <p>Wind Speed: <span id="goa-wind-speed">12 mph</span></p>
+        </div>
+    </section>
+
+    <section id="puri" class="card">
+        <h2>Puri</h2>
+        <div class="weather-info">
+            <p>Location: <span id="puri-location">Puri</span></p>
+            <p>Temperature: <span id="puri-temperature">80°F</span></p>
+            <p>Condition: <span id="puri-condition">Cloudy</span></p>
+        </div>
+        <div class="sea-info">
+            <p>Wave Height: <span id="puri-wave-height">4 ft</span></p>
+            <p>Water Temperature: <span id="puri-water-temp">75°F</span></p>
+            <p>Wind Speed: <span id="puri-wind-speed">10 mph</span></p>
+        </div>
+    </section>
+
+    <section id="mahabalipuram" class="card">
+        <h2>Mahabalipuram</h2>
+        <div class="weather-info">
+            <p>Location: <span id="mahabalipuram-location">Mahabalipuram</span></p>
+            <p>Temperature: <span id="mahabalipuram-temperature">82°F</span></p>
+            <p>Condition: <span id="mahabalipuram-condition">Windy</span></p>
+        </div>
+        <div class="sea-info">
+            <p>Wave Height: <span id="mahabalipuram-wave-height">2 ft</span></p>
+            <p>Water Temperature: <span id="mahabalipuram-water-temp">76°F</span></p>
+            <p>Wind Speed: <span id="mahabalipuram-wind-speed">8 mph</span></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Indian Beach Weather & Sea Conditions</p>
+    </footer>
+
+    <script>
+        document.getElementById("refreshButton").addEventListener("click", refreshData);
+
+function refreshData() {
+    const beaches = ['goa', 'puri', 'mahabalipuram'];
+
+    beaches.forEach(beach => {
+        const weatherData = {
+            location: capitalizeFirstLetter(beach),
+            temperature: Math.floor(Math.random() * 10 + 75) + "°F",
+            condition: ["Sunny", "Cloudy", "Rainy", "Windy"][Math.floor(Math.random() * 4)]
+        };
+
+        const seaData = {
+            waveHeight: Math.floor(Math.random() * 5) + " ft",
+            waterTemp: Math.floor(Math.random() * 10 + 70) + "°F",
+            windSpeed: Math.floor(Math.random() * 15) + " mph"
+        };
+
+        document.getElementById(`${beach}-location`).innerText = weatherData.location;
+        document.getElementById(`${beach}-temperature`).innerText = weatherData.temperature;
+        document.getElementById(`${beach}-condition`).innerText = weatherData.condition;
+
+        document.getElementById(`${beach}-wave-height`).innerText = seaData.waveHeight;
+        document.getElementById(`${beach}-water-temp`).innerText = seaData.waterTemp;
+        document.getElementById(`${beach}-wind-speed`).innerText = seaData.windSpeed;
+    });
+}
+
+// Function to capitalize first letter of a string
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Initial data load
+refreshData();
+
+    </script>
+</body>
+</html>

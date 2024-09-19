@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Amenities & Facilities</title>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f4c3;
+}
+
+header {
+    background-color: #ff5722;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #f57c20;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-left: 5px solid #ff5722; /* Colorful left border */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card span {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Amenities & Facilities at Indian Beaches</h1>
+        <p>Explore the facilities available at popular beaches!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goa">Goa</a></li>
+            <li><a href="#puri">Puri</a></li>
+            <li><a href="#andaman">Andaman Islands</a></li>
+            <li><a href="#mahabalipuram">Mahabalipuram</a></li>
+            <li><a href="#varkala">Varkala</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Select Facility Type</h2>
+        <select id="facilitySelect">
+            <option value="all">All Facilities</option>
+            <option value="food">Food Stalls</option>
+            <option value="parking">Parking</option>
+            <option value="water sports">Water Sports</option>
+            <option value="restrooms">Restrooms</option>
+        </select>
+    </section>
+
+    <div id="locations" class="cards-container">
+        <div class="card" data-category="food">
+            <h3>Goa</h3>
+            <p>Amenities: <span>Food Stalls, Water Sports, Restrooms</span></p>
+            <p>Notes: A variety of local cuisines available.</p>
+        </div>
+        <div class="card" data-category="parking">
+            <h3>Puri</h3>
+            <p>Amenities: <span>Parking, Restrooms</span></p>
+            <p>Notes: Ample parking space available.</p>
+        </div>
+        <div class="card" data-category="water sports">
+            <h3>Andaman Islands</h3>
+            <p>Amenities: <span>Water Sports, Food Stalls</span></p>
+            <p>Notes: Excellent scuba diving opportunities.</p>
+        </div>
+        <div class="card" data-category="restrooms">
+            <h3>Mahabalipuram</h3>
+            <p>Amenities: <span>Restrooms</span></p>
+            <p>Notes: Limited facilities nearby.</p>
+        </div>
+        <div class="card" data-category="food">
+            <h3>Varkala</h3>
+            <p>Amenities: <span>Food Stalls, Parking, Restrooms</span></p>
+            <p>Notes: Fresh seafood and local dishes available.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Beach Amenities Finder</p>
+    </footer>
+
+    <script>
+        document.getElementById("facilitySelect").addEventListener("change", filterCards);
+
+function filterCards() {
+    const selectedFacility = document.getElementById("facilitySelect").value;
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (selectedFacility === "all" || card.getAttribute("data-category") === selectedFacility) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</body>
+</html>
